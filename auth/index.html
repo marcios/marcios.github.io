@@ -7,7 +7,14 @@
 </head>
 <body>
     <script>
-        document.write(window.location.href)
+        const url = window.location.href;
+        const [,parameters] = url.split("?");
+        const params = {};
+        if(parameters && parameters.length){
+           const [code, codeParam] =  parameters[1].split("=");
+           params[code] = codeParam;
+        }
+        document.write(JSON.stringify(params))
     </script>
 </body>
 </html>
